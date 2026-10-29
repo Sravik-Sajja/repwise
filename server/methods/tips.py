@@ -25,7 +25,7 @@ def call_for_tips(workout_data):
         - Opposing muscle group imbalances (e.g. push vs pull volume)
         - Recent trend vs. earlier trend
         Return exactly 3 tips and nothing else.
-
+        Output exactly 3 lines, one tip per line, separated by a newline. Do not use bullets, headers, or any text besides the 3 lines.
         Output format:
         CATEGORY|TITLE|BODY|WHERE/WHY
 
@@ -59,7 +59,10 @@ def call_for_tips(workout_data):
         max_tokens=300,
         messages=[{"role": "user", "content": prompt}]
     )
-    formatted_tips = parse_tips_output(response.content[0].text)
+    raw = response.content[0].text
+    print("RAW OUTPUT:\n", raw)
+    formatted_tips = parse_tips_output(raw)
+    print("PARSED:", formatted_tips)
     return formatted_tips
 
 def filter_data(workout_data):

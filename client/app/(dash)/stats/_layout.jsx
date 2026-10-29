@@ -1,4 +1,4 @@
-import { Tabs } from "expo-router"
+import { Tabs, useRouter } from "expo-router"
 import { useColorScheme } from "react-native"
 import { Colors } from "../../../constants/Colors"
 
@@ -20,7 +20,9 @@ const StatsLayout = () => {
 
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
 
-const CustomTabBar = ({ state, descriptors, navigation, theme }) => {
+const CustomTabBar = ({ state, descriptors, theme }) => {
+    const router = useRouter()
+
     return (
         <View style={[styles.tabBar, { backgroundColor: theme.navBackground }]}>
             {state.routes.map((route, index) => {
@@ -30,8 +32,8 @@ const CustomTabBar = ({ state, descriptors, navigation, theme }) => {
 
                 return (
                     <TouchableOpacity
-                        key={index}
-                        onPress={() => navigation.navigate(route.name)}
+                        key={route.key}
+                        onPress={() => router.navigate(`/stats/${route.name}`)}
                         style={styles.tab}
                     >
                         <Text style={[styles.label, { color: isFocused ? Colors.primary : theme.iconColor, opacity: isFocused ? 1 : 0.4 }]}>
