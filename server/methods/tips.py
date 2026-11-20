@@ -26,8 +26,13 @@ def call_for_tips(workout_data):
         - Recent trend vs. earlier trend
         Return exactly 3 tips and nothing else.
         Output exactly 3 lines, one tip per line, separated by a newline. Do not use bullets, headers, or any text besides the 3 lines.
-        Output format:
+        Output format (exactly 4 fields separated by | on ONE line per tip):
         CATEGORY|TITLE|BODY|WHERE/WHY
+
+        Example:
+        Progressive overload|Bench flat for 3 weeks|Drop to 3x8 at the same weight, then add 5 lb.|Weights 165x8 on 3/1, 3/8, 3/15 with no change; your muscles adapt to the same stimulus over time.
+
+        Each tip must contain exactly 3 "|" characters. Never use "|" inside a field.
 
         Rules:
         - CATEGORY: one of Recovery, Progressive overload, Consistency, Muscle imbalance(compare opposing muscle groups), Habit insight
